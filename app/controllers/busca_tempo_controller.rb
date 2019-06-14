@@ -5,6 +5,9 @@ class BuscaTempoController < ApplicationController
         render json: ComunicacaoWeather.new.buscar(tempo_params[:cidade])
     end
 
+    def buscar_hora
+        render json: ComunicacaoHora.new.buscar(tempo_params[:cidade])
+    end
 
     private 
     def tempo_params
