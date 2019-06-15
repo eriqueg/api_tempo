@@ -10,7 +10,8 @@ class ComunicacaoWeather
             #url = "https://viacep.com.br/ws/#{@cep}/json/"
             retorno = JSON.parse(Net::HTTP.get(URI(url)))
            
-            retornar = {"clima":retorno["weather"]["clouds"]
+            retornar = {"clima":retorno["weather"]["clouds"],
+                        "vento": retorno["wind"]["speed"]
 
             }
 
