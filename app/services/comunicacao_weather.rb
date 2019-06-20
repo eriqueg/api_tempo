@@ -21,7 +21,7 @@ class ComunicacaoWeather
                 "Vento": retorno["wind"]["speed"],
                 "Alvorada": Time.at(retorno["sys"]["sunrise"]),
                 "Crepúsculo": Time.at(retorno["sys"]["sunset"])}
-end
+
 
     end
 end
