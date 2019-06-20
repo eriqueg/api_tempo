@@ -4,7 +4,7 @@ class ComunicacaoHora
         @cidade = cidade
         
 
-        url = "http://api.openweathermap.org/data/2.5/forecast/hourly?APPID=2c95be93f58b3a6e7e8c70e496354c03&q=#{@cidade}&lang=pt_br"
+        url = "http://api.openweathermap.org/data/2.5/forecast/hourly?APPID=2c95be93f58b3a6e7e8c70e496354c03&q=#{@cidade},br&lang=pt_br"
         
         retorno = JSON.parse(Net::HTTP.get(URI(url)))
         result = []               
