@@ -10,10 +10,18 @@ class ComunicacaoWeather
             #url = "https://viacep.com.br/ws/#{@cep}/json/"
             retorno = JSON.parse(Net::HTTP.get(URI(url)))
            
-            # temp = {"clima": retorno["weather"]["main"],
-            #             "vento": retorno["wind"]["speed"],
-
-            # }
+            temp = {"Data": Time.at(retorno["dt"]),
+                "Clima": retorno["weather"][0]["main"], 
+                "Descrição": retorno["weather"][0]["description"],
+                "Temperatura": retorno["main"]["temp"],
+                "Pressão": retorno["main"]["pressure"],
+                "Humidade": retorno["main"]["humidity"],
+                "Temperatura Maxima": retorno["main"]["temp_max"],
+                "Temperatura Minima": retorno["main"]["temp_min"],
+                "Vento": retorno["wind"]["speed"],
+                "Alvorada": Time.at(retorno["sys"]["sunrise"]),
+                "Crepúsculo": Time.at(retorno["sys"]["sunset"])}
+end
 
     end
 end
