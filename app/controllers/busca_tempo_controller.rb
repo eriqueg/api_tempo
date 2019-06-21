@@ -8,6 +8,9 @@ class BuscaTempoController < ApplicationController
     def buscar_hora
         render json: ComunicacaoHora.new.buscar(tempo_params[:cidade])
     end
+    def buscar_dia
+        render json: ComunicacaoProximos.new.buscar(tempo_params[:cidade])
+    end
 
     private 
     def tempo_params

@@ -1,4 +1,4 @@
-class ComunicacaoHora
+class ComunicacaoProximos
 
     def buscar(cidade)
             
