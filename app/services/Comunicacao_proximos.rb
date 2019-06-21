@@ -9,18 +9,18 @@ class ComunicacaoProximos
        
 
         retorno = JSON.parse(Net::HTTP.get(URI(url)))
-       
-        temp = {"Data": Time.at(retorno["dt"]),
-            "Clima": retorno["weather"][0]["main"], 
-            "Descrição": retorno["weather"][0]["description"],
-            "Temperatura": retorno["main"]["temp"],
-            "Pressão": retorno["main"]["pressure"],
-            "Humidade": retorno["main"]["humidity"],
-            "Temperatura Maxima": retorno["main"]["temp_max"],
-            "Temperatura Minima": retorno["main"]["temp_min"],
-            "Vento": retorno["wind"]["speed"],
-            "Alvorada": Time.at(retorno["sys"]["sunrise"]),
-            "Crepúsculo": Time.at(retorno["sys"]["sunset"])}
+               
+            temp =  {"Hora" Time.at(retorno["dt"]),
+                            "Clima" retorno["clouds"]["all"], 
+                            "Descrição" retorno["weather"][0]["description"],
+                            "Temperatura" retorno["main"]["temp"],
+                            "Pressão" retorno["main"]["pressure"],
+                            "Humidade" retorno["main"]["humidity"],
+                            "Temperatura_Mínima" retorno["main"]["temp_min"],
+                            "Temperatura Máxima" retorno["main"]["temp_max"],
+                            "Vento" retorno["wind"]["speed"]
+                          }                                                    
+                  
 
 
 end
