@@ -10,18 +10,19 @@ class ComunicacaoWeather
             
             retorno = JSON.parse(Net::HTTP.get(URI(url)))
            
-            temp = {"Data": Time.at(retorno["dt"]),
-                "Clima": retorno["weather"][0]["main"], 
-                "Descrição": retorno["weather"][0]["description"],
-                "Temperatura": retorno["main"]["temp"],
-                "Pressão": retorno["main"]["pressure"],
-                "Humidade": retorno["main"]["humidity"],
-                "Temperatura Maxima": retorno["main"]["temp_max"],
-                "Temperatura Minima": retorno["main"]["temp_min"],
-                "Vento": retorno["wind"]["speed"],
-                "Alvorada": Time.at(retorno["sys"]["sunrise"]),
-                "Crepúsculo": Time.at(retorno["sys"]["sunset"])}
-
-
+            result = []               
+            retorno["list"].each do |horario|           
+                result << {Hora: Time.at(horario["dt"]),
+                                Clima: horario["clouds"]["all"], 
+                                Descrição: horario["weather"][0]["description"],
+                                Temperatura: horario["main"]["temp"],
+                                Pressão: horario["main"]["pressure"],
+                                Humidade: horario["main"]["humidity"],
+                                Temperatura_Mínima: horario["main"]["temp_min"],
+                                Temperatura_Máxima: horario["main"]["temp_max"],
+                                Vento: horario["wind"]["speed"]
+                              }                                                    
+                        end      
+              result
     end
 end
