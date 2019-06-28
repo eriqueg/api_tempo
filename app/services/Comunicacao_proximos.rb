@@ -10,19 +10,20 @@ class ComunicacaoProximos
 
         retorno = JSON.parse(Net::HTTP.get(URI(url)))
                
-            temp =  {"Hora" Time.at(retorno["dt"]),
-                            "Clima": retorno["clouds"]["all"], 
-                            "Descrição": retorno["weather"][0]["description"],
-                            "Temperatura": retorno["main"]["temp"],
-                            "Pressão": retorno["main"]["pressure"],
-                            "Humidade": retorno["main"]["humidity"],
-                            "Temperatura_Mínima": retorno["main"]["temp_min"],
-                            "Temperatura_Máxima": retorno["main"]["temp_max"],
-                            "Vento": retorno["wind"]["speed"]
+        result = []               
+        retorno["list"].each do |horario|           
+            result << {Hora: Time.at(horario["dt"]),
+                            Clima: horario["clouds"]["all"], 
+                            Descrição: horario["weather"][0]["description"],
+                            Temperatura: horario["main"]["temp"],
+                            Pressão: horario["main"]["pressure"],
+                            Humidade: horario["main"]["humidity"],
+                            Temperatura_Mínima: horario["main"]["temp_min"],
+                            Temperatura_Máxima: horario["main"]["temp_max"],
+                            Vento: horario["wind"]["speed"]
                           }                                                    
-                  
-
-
+                    end      
+          result
 end
 
 end
